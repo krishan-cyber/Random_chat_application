@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Chat</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'main_style.css' %}"></style>
+  <script src="{% static 'main_src.js' %}" defer></script>
+</head>
+<body>
+  <h2>Random Chat</h2>
+  <div id="chat"></div>
+ <div id="privacyModal" class="modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Privacy Policy</h2>
+
+    <p>This Privacy Policy outlines the types of information collected by our anonymous chat platform ("we", "us", or "our") and how we use it. By using our website, you consent to this policy and agree to its terms.</p>
+
+    <h3>Information We Collect</h3>
+    <ul>
+      <li><strong>IP Address:</strong> Temporarily collected for pairing and moderation.</li>
+      <li><strong>Chat Content:</strong> Stored only when reported.</li>
+    </ul>
+
+    <h3>How We Use It</h3>
+    <ul>
+      <li>Enable anonymous chatting</li>
+      <li>Prevent abuse & block offenders</li>
+      <li>Review reported conversations</li>
+    </ul>
+
+    <h3>Cookies</h3>
+    <p>No cookies or trackers are used.</p>
+
+    <h3>Data Retention</h3>
+    <p>Only reported chats are saved temporarily. Violators’ IPs are blocked; other reports are discarded after review.</p>
+
+    <h3>Children’s Privacy</h3>
+    <p>Intended for users aged 13+. No intentional data collection from children.</p>
+
+    <h3>Contact</h3>
+    <p><a href="#" class="contact-link">Contact Us</a> for questions or removal requests.</p>
+  </div>
+</div>
+<div id="termsModal" class="modal">
+  <div class="modal-content">
+    <span class="close-button" id="closeTerms">&times;</span>
+    <h2>Terms of Use</h2>
+
+    <h3>Introduction</h3>
+    <p>Welcome to our anonymous chat platform ("we", "us", "our"). By using this website and its services, you agree to the following Terms of Use. If you disagree with any part, please do not use the service.</p>
+
+    <h3>Eligibility</h3>
+    <ul>
+      <li><strong>Minimum Age:</strong> You must be at least 18 years old to use this platform.</li>
+      <li><strong>Responsible Use:</strong> No abuse, obscenity, hate speech, or illegal activity allowed.</li>
+      <li><strong>Protection of Minors:</strong> Any suspected underage users should be reported immediately.</li>
+      <li><strong>Prohibited Content:</strong> No pornographic, violent, exploitative, or misleading content is permitted.</li>
+      <li><strong>No Disruption:</strong> Activities like stalking, impersonation, hacking, and automation are banned.</li>
+    </ul>
+
+    <h3>Privacy Policy</h3>
+    <p>See our <a href="#" class="privacy-link" onclick="document.getElementById('privacyModal').style.display='block'">Privacy Policy</a> for details on how we collect and use your data.</p>
+
+    <h3>Proprietary Rights</h3>
+    <p>All content and software is protected. You may not copy, sell, or distribute our materials without written permission.</p>
+
+    <h3>Content Standards</h3>
+    <p>All users must comply with content standards. Violating content may be removed without notice.</p>
+
+    <h3>Termination</h3>
+    <p>We reserve the right to suspend or delete accounts at any time for policy violations.</p>
+
+    <h3>Limitation of Liability</h3>
+    <p>The service is provided "as-is". We are not liable for any content posted by users or for any damages incurred.</p>
+
+    <h3>Indemnity</h3>
+    <p>You agree to indemnify us for any claims arising from your use of the platform in violation of these terms.</p>
+
+    <h3>AI Monitoring</h3>
+    <p>Our service uses AI moderation. Serious violations may lead to warnings, restrictions, or permanent bans.</p>
+
+    <h3>Governing Law</h3>
+    <p>These terms are governed by the laws of our jurisdiction.</p>
+
+    <h3>Severability</h3>
+    <p>If any term is found invalid, the remaining terms stay in effect.</p>
+
+    <h3>Changes</h3>
+    <p>We may revise these terms at any time. Continued use means you accept the changes.</p>
+
+    <h3>Contact</h3>
+    <p>If you have questions, <a href="#" class="contact-link">Contact Us</a>.</p>
+  </div>
+</div>
+<!-- Contact Us Modal -->
+<div id="contactModal" class="modal">
+  <div class="modal-content">
+    <span class="close-button" id="closeContact">&times;</span>
+    <h2>Contact Us</h2>
+    
+    <form id="contactForm" method="POST" data-url="{% url 'contact_submit' %}">
+      {% csrf_token %}
+      <label for="contactName">Your Name</label>
+      <input type="text" id="contactName" name="name" placeholder="Enter your name" required>
+
+      <label for="contactEmail">Your Email</label>
+      <input type="email" id="contactEmail" name="person_email" placeholder="Enter your email" required>
+
+      <label for="contactMessage">Message</label>
+      <textarea id="contactMessage" name="message" placeholder="Enter your message" required></textarea>
+
+      <button type="submit">Send</button>
+      <div id="contactSuccess" style="display: none; margin-top: 1rem; color: green; font-weight: bold;">
+      Message sent successfully!
+    </div>
+    </form>
+  </div>
+</div>
+<a href="#" id="openContact">Contact Us</a>
+</div>
+<a href="#" id="openTerms">Terms of Use</a>
+<a href="#" id="openPrivacyPolicy">Privacy Policy</a>
+
+  <div class="chat-controls">
+    <input type="text" id="msg" placeholder="Type a message..." autofocus>
+    <button id="sendMessageBtn" onclick="sendMessage()">Send</button>
+    <input type="file" id="imgInput" accept="image/*" style="display: none;">
+    <button id="requestImageBtn" onclick="requestImage()">Request Image</button>
+    <button id="nextChatBtn" onclick="nextChat()">Next</button>
+    <button id="reportChatBtn" onclick="reportChat()">Report</button>
+  </div>
+  
+</body>
+</html>

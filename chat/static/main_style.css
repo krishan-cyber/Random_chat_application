@@ -1,0 +1,186 @@
+
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh; 
+      background-color: #f0f2f5;
+    }
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    #chat {
+      border: 1px solid #ccc;
+      height: 300px;
+      width: 90%; 
+      max-width: 600px; 
+      overflow-y: auto;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    #msg {
+      width: calc(90% - 70px); 
+      max-width: 530px; 
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-right: 5px;
+    }
+    .system {
+      color: #666;
+      font-style: italic;
+      text-align: center;
+      margin: 5px 0;
+    }
+    .typing {
+      color: #e91e63;
+      font-style: italic;
+      text-align: center;
+      margin: 5px 0;
+    }
+    img {
+      max-width: 100%; 
+      height: auto;
+      border-radius: 8px;
+      display: block;
+      margin-top: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.2s ease;
+      margin: 4px;
+    }
+    button:hover:not(:disabled) { 
+      background-color: #0056b3;
+    }
+    button:disabled { 
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    #namePrompt {
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      margin-top: 10px;
+      text-align: center;
+      width: 90%;
+      max-width: 580px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    #namePrompt label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.1em;
+      color: #333;
+    }
+    #namePrompt input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: calc(100% - 20px); 
+      max-width: 250px;
+      margin-right: 5px;
+    }
+    #namePrompt button {
+      margin-top: 10px;
+      background-color: #28a745;
+    }
+    #namePrompt button:hover:not(:disabled) {
+      background-color: #218838;
+    }
+    .chat-controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 90%;
+      max-width: 600px;
+      margin-top: 10px;
+    }
+    .chat-controls button {
+      flex-grow: 1;
+      margin: 5px;
+    }
+    /* Modal base styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+  padding-top: 60px;
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #fff;
+  margin: 3% auto;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
+  animation: fadeIn 0.3s ease;
+}
+
+/* Close button */
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close-button:hover,
+.close-button:focus {
+  color: #000;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+  
+#contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#contactForm input,
+#contactForm textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 16px;
+  resize: vertical;
+}
+
+#contactForm button {
+  background-color: #28a745;
+}
+#contactForm button:hover {
+  background-color: #218838;
+}
+
